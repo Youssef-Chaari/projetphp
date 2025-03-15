@@ -1,0 +1,327 @@
+:root {
+    /* Couleurs */
+    --primary: #2c3e50; /* Couleur principale (bleu foncé) */
+    --secondary: #1abc9c; /* Couleur secondaire (turquoise) */
+    --accent: #e74c3c; /* Couleur d'accent (rouge) */
+    --light: #f8f9fa; /* Fond clair */
+    --dark: #2c3e50; /* Texte sombre */
+    --text: #333; /* Couleur du texte */
+    --white: #ffffff; /* Blanc */
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre par défaut */
+
+    /* Espacements */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 3rem;
+
+    /* Typographie */
+    --font-base: 'Segoe UI', system-ui, sans-serif;
+    --font-heading: 'Montserrat', sans-serif;
+    --line-height: 1.6;
+}
+
+/* Réinitialisation et base */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-base);
+    color: var(--text);
+    line-height: var(--line-height);
+    background-color: var(--light);
+}
+
+/* Header modernisé */
+header {
+    background: var(--primary);
+    padding: var(--space-sm) 0;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo img {
+    height: 60px;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+    transform: scale(1.05);
+}
+
+nav ul {
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
+    justify-content: center;
+}
+
+nav li {
+    position: relative;
+    list-style: none;
+}
+
+nav a {
+    color: var(--white);
+    text-decoration: none;
+    padding: var(--space-xs) 0;
+    transition: color 0.3s ease;
+    font-weight: 500;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--secondary);
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--secondary);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* Layout principal amélioré */
+main {
+    padding: var(--space-lg) 5%;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Section héro */
+.hero {
+    background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(26, 188, 156, 0.8)),
+                url('../images/hero-bg.jpg') center/cover;
+    border-radius: 1rem;
+    padding: var(--space-lg);
+    color: var(--white);
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    box-shadow: var(--shadow);
+}
+
+.hero h1 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    margin-bottom: var(--space-sm);
+    animation: slideIn 1s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-50px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+/* Grille de produits améliorée */
+.produits {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-md);
+    padding: var(--space-md) 0;
+}
+
+.produit {
+    background: var(--white);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.produit:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.produit img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-bottom: 3px solid var(--secondary);
+}
+
+.produit h2 {
+    font-family: var(--font-heading);
+    padding: var(--space-sm);
+    color: var(--primary);
+}
+
+.produit .price {
+    display: block;
+    padding: 0 var(--space-sm) var(--space-sm);
+    font-size: 1.25rem;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+/* Page de contact modernisée */
+.contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-lg);
+    background: var(--white);
+    border-radius: 1rem;
+    padding: var(--space-lg);
+    box-shadow: var(--shadow);
+}
+
+.contact-info {
+    background: var(--primary);
+    color: var(--white);
+    padding: var(--space-lg);
+    border-radius: 1rem;
+}
+
+.social-links {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+}
+
+.social-links a {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    padding: var(--space-sm);
+    border-radius: 0.5rem;
+    text-align: center;
+    transition: background 0.3s ease;
+}
+
+.social-links a:hover {
+    background: var(--secondary);
+}
+
+/* Formulaire amélioré */
+.form-group {
+    margin-bottom: var(--space-md);
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: var(--space-sm);
+    border: 2px solid #eee;
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--secondary);
+    outline: none;
+}
+
+/* Tableau de bord admin */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-md);
+}
+
+.dashboard-card {
+    background: var(--white);
+    padding: var(--space-lg);
+    border-radius: 1rem;
+    text-align: center;
+    transition: transform 0.3s ease;
+    box-shadow: var(--shadow);
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+}
+
+.dashboard-card h2 {
+    color: var(--primary);
+    margin-bottom: var(--space-sm);
+}
+
+/* Boutons modernes */
+.btn {
+    background: var(--secondary);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    color: var(--white);
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.3),
+        transparent
+    );
+    transition: left 0.6s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn:hover {
+    background: #16a085;
+    box-shadow: 0 4px 15px rgba(26, 188, 156, 0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--space-sm);
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --space-md: 1.5rem;
+        --space-lg: 2rem;
+    }
+    
+    .produits {
+        grid-template-columns: 1fr;
+    }
+}
