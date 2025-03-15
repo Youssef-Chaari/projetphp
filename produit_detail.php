@@ -21,17 +21,20 @@ if (!$produit) {
 ?>
 
 <main>
-<link rel="stylesheet" href="assets/css/style.css">
-
+    <link rel="stylesheet" href="assets/css/style.css">
     <h1><?= $produit['nom'] ?></h1>
-    <img src="assets/images/<?= $produit['image'] ?>" alt="<?= $produit['nom'] ?>">
-    <p><?= $produit['description'] ?></p>
-    <p>Prix : <?= $produit['prix'] ?> DT</p>
-    <p>Équipe : <?= $produit['equipe'] ?></p>
-    <p>Ligue : <?= $produit['ligue'] ?></p>
-    <p>Taille : <?= $produit['taille'] ?></p>
-    <p>Saison : <?= $produit['saison'] ?></p>
-    <a href="panier.php?action=ajouter&id=<?= $produit['id'] ?>" class="btn">Ajouter au panier</a>
+    <div class="produit-detail">
+        <img src="uploads/<?= htmlspecialchars($produit['image']) ?>" alt="<?= htmlspecialchars($produit['nom']) ?>" class="produit-image">
+        <div class="produit-info">
+            <p><?= $produit['description'] ?></p>
+            <p><strong>Prix :</strong> <?= $produit['prix'] ?> DT</p>
+            <p><strong>Équipe :</strong> <?= $produit['equipe'] ?></p>
+            <p><strong>Ligue :</strong> <?= $produit['ligue'] ?></p>
+            <p><strong>Taille :</strong> <?= $produit['taille'] ?></p>
+            <p><strong>Saison :</strong> <?= $produit['saison'] ?></p>
+            <a href="panier.php?action=ajouter&id=<?= $produit['id'] ?>" class="btn">Ajouter au panier</a>
+        </div>
+    </div>
 </main>
 
 <?php

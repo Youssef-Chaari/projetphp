@@ -19,11 +19,6 @@ include '../includes/header-admin.php';
         <p>Gérez les commandes des clients.</p>
         <a href="commandes.php" class="btn">Voir les commandes</a>
     </div>
-    <div class="dashboard-card">
-        <h2>Utilisateurs</h2>
-        <p>Gérez les utilisateurs inscrits.</p>
-        <a href="utilisateurs.php" class="btn">Voir les utilisateurs</a>
-    </div>
 </div>
 
 <?php

@@ -13,7 +13,7 @@ $produits = $stmt->fetchAll();
 ?>
 
 <h1>Gestion des Produits</h1>
-<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="styleadmin.css">
 
 <a href="ajouter_produit.php" class="btn">Ajouter un produit</a>
 <table>

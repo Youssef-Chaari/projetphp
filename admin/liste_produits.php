@@ -19,7 +19,6 @@ $produits = $stmt->fetchAll();
 <body>
     <?php include '../includes/header-admin.php'; ?>
     <main>
-<link rel="stylesheet" href="assets/css/style.css">
 
         <h1>Liste des produits</h1>
         <table>

@@ -14,7 +14,7 @@ if ($_SESSION['utilisateur_role'] !== 'admin') {
 <head>
     <meta charset="UTF-8">
     <title>Tableau de Bord Admin</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="styleadmin.css">
 </head>
 <body>
     <?php include '../includes/header-admin.php'; ?>

@@ -38,7 +38,7 @@ include '../includes/header-admin.php';
 ?>
 
 <main>
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/style.css">
 
     <h1>Détails de la Commande #<?= $commande['id'] ?></h1>
     <div class="commande-details">

@@ -116,7 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adresse_livraison']))
 ?>
 
 <main>
-<link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <h1>Panier</h1>
     <?php if (empty($panier)) : ?>
@@ -127,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['adresse_livraison']))
                 <ul>
                     <?php foreach ($panier as $item) : ?>
                         <li class="produit-panier">
-                            <img src="assets/images/<?= $item['image'] ?>" alt="<?= $item['nom'] ?>">
+                            <img src="uploads/<?= htmlspecialchars($item['image']) ?>" alt="<?= htmlspecialchars($item['nom']) ?>" class="produit-image">
                             <div>
                                 <h2><?= $item['nom'] ?></h2>
                                 <p><?= $item['prix'] ?> DT</p>

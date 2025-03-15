@@ -20,11 +20,6 @@ try {
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['id' => $id]);
 
-    // Supprimer les avis liés à ce produit (si nécessaire)
-    $sql = "DELETE FROM avis WHERE id_produit = :id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(['id' => $id]);
-
     // Supprimer le produit
     $sql = "DELETE FROM produits WHERE id = :id";
     $stmt = $pdo->prepare($sql);

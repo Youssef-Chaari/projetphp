@@ -1,10 +1,16 @@
 <?php
+session_start();
 include 'includes/config.php';
 include 'includes/auth.php';
 
 // Rediriger l'utilisateur s'il est déjà connecté
 if (isset($_SESSION['utilisateur_id'])) {
-    header('Location: index.php');
+    // Vérifier le rôle de l'utilisateur pour la redirection
+    if ($_SESSION['utilisateur_role'] === 'admin') {
+        header('Location: index-admin.php');
+    } else {
+        header('Location: index.php');
+    }
     exit();
 }
 
@@ -18,10 +24,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $utilisateur = $stmt->fetch();
 
     if ($utilisateur && password_verify($mot_de_passe, $utilisateur['mot_de_passe'])) {
+        // Enregistrer les informations de l'utilisateur dans la session
         $_SESSION['utilisateur_id'] = $utilisateur['id'];
         $_SESSION['utilisateur_nom'] = $utilisateur['nom'];
         $_SESSION['utilisateur_role'] = $utilisateur['role'];
-        header('Location: index.php');
+
+        // Rediriger en fonction du rôle de l'utilisateur
+        if ($utilisateur['role'] === 'admin') {
+            header('Location: admin/index-admin.php');
+        } else {
+            header('Location: index.php');
+        }
         exit();
     } else {
         $erreur = "Email ou mot de passe incorrect.";
@@ -39,8 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <?php include 'includes/header.php'; ?>
     <main>
-<link rel="stylesheet" href="assets/css/style.css">
-
         <h1>Connexion</h1>
         <?php if (isset($erreur)) : ?>
             <p style="color: red;"><?= $erreur ?></p>
