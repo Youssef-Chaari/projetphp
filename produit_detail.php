@@ -28,6 +28,7 @@ if (!$produit) {
         <div class="produit-info">
             <p><?= $produit['description'] ?></p>
             <p><strong>Prix :</strong> <?= $produit['prix'] ?> DT</p>
+            <p><strong>Statut :</strong> <?= ($produit['stock'] > 0) ? 'Disponible' : 'Épuisé' ?></p>
             <p><strong>Équipe :</strong> <?= $produit['equipe'] ?></p>
             <p><strong>Ligue :</strong> <?= $produit['ligue'] ?></p>
             <p><strong>Taille :</strong> <?= $produit['taille'] ?></p>

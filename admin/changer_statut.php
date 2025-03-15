@@ -17,6 +17,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'id' => $commande_id
     ]);
 
+    // Si le statut est "Livrée", mettre à jour le stock des produits
+    if ($nouveau_statut === 'Livrée') {
+        // Récupérer les produits de la commande
+        $sql = "SELECT id_produit, quantite FROM details_commande WHERE id_commande = :id_commande";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['id_commande' => $commande_id]);
+        $details_commande = $stmt->fetchAll();
+
+        // Mettre à jour le stock pour chaque produit
+        foreach ($details_commande as $detail) {
+            $id_produit = $detail['id_produit'];
+            $quantite = $detail['quantite'];
+
+            // Mettre à jour le stock
+            $sql = "UPDATE produits SET stock = stock - :quantite WHERE id = :id";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute([
+                'quantite' => $quantite,
+                'id' => $id_produit
+            ]);
+        }
+    }
+
     // Rediriger vers la page des commandes avec un message de succès
     header('Location: liste_commandes.php?status=success');
     exit;

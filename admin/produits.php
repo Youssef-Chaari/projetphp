@@ -31,7 +31,7 @@ $produits = $stmt->fetchAll();
             <tr>
                 <td><?= $produit['id'] ?></td>
                 <td><?= $produit['nom'] ?></td>
-                <td><?= $produit['prix'] ?> €</td>
+                <td><?= $produit['prix'] ?> DT</td>
                 <td><?= $produit['stock'] ?></td>
                 <td>
                     <a href="modifier_produit.php?id=<?= $produit['id'] ?>" class="btn">Modifier</a>

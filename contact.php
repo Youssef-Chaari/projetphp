@@ -7,7 +7,8 @@ include 'includes/header.php';
 
 <main>
     <h1>Contactez-nous</h1>
-    
+    <link rel="stylesheet" href="assets/css/style.css">
+
     <div class="contact-container">
         <div class="contact-form">
             <form action="send_email.php" method="POST">

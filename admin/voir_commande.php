@@ -43,7 +43,7 @@ include '../includes/header-admin.php';
     <h1>Détails de la Commande #<?= $commande['id'] ?></h1>
     <div class="commande-details">
         <p><strong>Utilisateur :</strong> <?= $commande['utilisateur_nom'] ?></p>
-        <p><strong>Total :</strong> <?= $commande['total'] ?> €</p>
+        <p><strong>Total :</strong> <?= $commande['total'] ?> DT</p>
         <p><strong>Date :</strong> <?= date('d/m/Y H:i', strtotime($commande['date_commande'])) ?></p>
         <p><strong>Statut :</strong> <?= $commande['statut'] ?></p>
     </div>
@@ -62,9 +62,9 @@ include '../includes/header-admin.php';
             <?php foreach ($produits as $produit) : ?>
                 <tr>
                     <td><?= $produit['nom'] ?></td>
-                    <td><?= $produit['prix'] ?> €</td>
+                    <td><?= $produit['prix'] ?> DT</td>
                     <td><?= $produit['quantite'] ?></td>
-                    <td><?= $produit['prix'] * $produit['quantite'] ?> €</td>
+                    <td><?= $produit['prix'] * $produit['quantite'] ?> DT</td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

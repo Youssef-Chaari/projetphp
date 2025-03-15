@@ -270,6 +270,7 @@ form textarea:focus {
         grid-template-columns: 1fr;
     }
 }
+
 /* Styles pour la page des produits */
 .produits {
     display: grid;

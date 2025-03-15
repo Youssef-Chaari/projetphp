@@ -1,5 +1,5 @@
 <footer>
-<link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <div class="container">
         <p>&copy; <?= date('Y') ?> Mrewel Koura'. Tous droits réservés.</p>
         <ul>

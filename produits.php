@@ -36,6 +36,7 @@ $produits = $stmt->fetchAll();
 
                         <h2><?= htmlspecialchars($produit['nom']) ?></h2>
                         <p><?= htmlspecialchars($produit['prix']) ?> DT</p>
+                        <p><strong>Statut :</strong> <?= ($produit['stock'] > 0) ? 'Disponible' : 'Épuisé' ?></p>
                         <a href="produit_detail.php?id=<?= $produit['id'] ?>" class="btn">Voir plus</a>
                     </div>
                 <?php endforeach; ?>

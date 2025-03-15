@@ -33,7 +33,7 @@ $commandes = $stmt->fetchAll();
             <tr>
                 <td><?= $commande['id'] ?></td>
                 <td><?= $commande['utilisateur_nom'] ?></td>
-                <td><?= $commande['total'] ?> €</td>
+                <td><?= $commande['total'] ?> DT</td>
                 <td><?= date('d/m/Y H:i', strtotime($commande['date_commande'])) ?></td>
                 <td><?= $commande['statut'] ?></td>
                 <td>
