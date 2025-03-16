@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../includes/config.php';
-include '../includes/auth.php'; // Vérifie si l'utilisateur est admin
+include '../includes/auth.php';
 
 if ($_SESSION['utilisateur_role'] !== 'admin') {
     header('Location: ../index.php');

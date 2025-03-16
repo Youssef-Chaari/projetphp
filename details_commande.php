@@ -12,7 +12,6 @@ if (!isset($_GET['id'])) {
 $commande_id = intval($_GET['id']);
 $utilisateur_id = $_SESSION['utilisateur_id'];
 
-// Récupérer les informations de la commande
 $sql = "SELECT id, statut FROM commandes WHERE id = :commande_id AND id_utilisateur = :utilisateur_id";
 $stmt = $pdo->prepare($sql);
 $stmt->execute(['commande_id' => $commande_id, 'utilisateur_id' => $utilisateur_id]);
@@ -23,7 +22,6 @@ if (!$commande) {
     exit();
 }
 
-// Récupérer les détails de la commande
 $sql = "SELECT produits.nom, produits.prix, details_commande.quantite 
         FROM details_commande 
         INNER JOIN produits ON details_commande.id_produit = produits.id 
@@ -32,7 +30,6 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute(['commande_id' => $commande_id]);
 $details_commande = $stmt->fetchAll();
 
-// Normaliser le statut de la commande
 $statut = strtolower(trim($commande['statut']));
 ?>
 
@@ -47,7 +44,6 @@ $statut = strtolower(trim($commande['statut']));
     <main>
         <h1>Détails de la commande #<?= $commande_id ?></h1>
 
-        <!-- Afficher un message de succès ou d'erreur -->
         <?php if (isset($_SESSION['message'])) : ?>
             <div class="alert alert-success"><?= $_SESSION['message'] ?></div>
             <?php unset($_SESSION['message']); ?>
@@ -78,7 +74,6 @@ $statut = strtolower(trim($commande['statut']));
             </table>
         <?php endif; ?>
 
-        <!-- Bouton pour annuler la commande -->
         <?php if ($statut === 'en cours de traitement') : ?>
             <form action="annuler_commande.php" method="POST" style="margin-top: 20px;">
                 <input type="hidden" name="commande_id" value="<?= $commande_id ?>">

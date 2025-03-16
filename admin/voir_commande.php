@@ -11,7 +11,6 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
-// Récupérer les détails de la commande
 $sql = "SELECT commandes.*, utilisateurs.nom AS utilisateur_nom 
         FROM commandes
         INNER JOIN utilisateurs ON commandes.utilisateur_id = utilisateurs.id
@@ -25,7 +24,6 @@ if (!$commande) {
     exit;
 }
 
-// Récupérer les produits de la commande
 $sql = "SELECT produits.nom, produits.prix, commande_produits.quantite 
         FROM commande_produits
         INNER JOIN produits ON commande_produits.produit_id = produits.id

@@ -11,7 +11,7 @@
 <body>
     <header class="admin-header">
         <div class="logo">
-            <img src="assets/images/logo-admin.png" alt="Logo Admin">
+            <img src="../assets/images/logo.png" alt="Logo">
         </div>
         <nav>
             <ul><fieldset></fieldset>

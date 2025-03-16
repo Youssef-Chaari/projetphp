@@ -1,11 +1,10 @@
 <?php
 session_start();
 include 'includes/config.php';
-include 'includes/auth.php'; // Vérifie si l'utilisateur est connecté
-verifierConnexion(); // Applique la vérification
+include 'includes/auth.php'; 
+verifierConnexion(); 
 include 'includes/header.php';
 
-// Récupérer les produits
 $sql = "SELECT * FROM produits";
 $stmt = $pdo->query($sql);
 $produits = $stmt->fetchAll();
@@ -27,7 +26,6 @@ $produits = $stmt->fetchAll();
             <?php else : ?>
                 <?php foreach ($produits as $produit) : ?>
                     <div class="produit">
-                        <!-- Afficher l'image du produit -->
                         <?php if (!empty($produit['image'])) : ?>
                             <img src="uploads/<?= htmlspecialchars($produit['image']) ?>" alt="<?= htmlspecialchars($produit['nom']) ?>">
                         <?php else : ?>

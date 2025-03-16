@@ -19,7 +19,7 @@
                     <li><a href="produits.php">Produits</a></li>
                     <li><a href="profil.php">Profil</a></li>
                     <li><a href="panier.php">Panier</a></li>
-                    <li><a href="historique_achats.php">Historique des commandes</a></li> <!-- Nouveau lien -->
+                    <li><a href="historique_achats.php">Historique des commandes</a></li>
                     <li><a href="contact.php">Contacter Nous</a></li>
                     <li><a href="deconnexion.php">Déconnexion</a></li>
                 <?php else : ?>

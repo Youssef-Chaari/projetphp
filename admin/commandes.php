@@ -6,7 +6,6 @@ verifierAdmin();
 
 include '../includes/header-admin.php';
 
-// Récupérer la liste des commandes
 $sql = "SELECT commandes.id, utilisateurs.nom AS utilisateur_nom, commandes.total, commandes.date_commande, commandes.statut 
         FROM commandes
         INNER JOIN utilisateurs ON commandes.client_id = utilisateurs.id

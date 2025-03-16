@@ -1,18 +1,16 @@
 <?php
 session_start();
 include '../includes/config.php';
-include '../includes/auth.php'; // Vérifie si l'utilisateur est admin
+include '../includes/auth.php'; 
 verifierAdmin();
 
-// Récupérer les statuts disponibles depuis la base de données
 $sqlStatuts = "SELECT DISTINCT statut FROM commandes";
 $stmtStatuts = $pdo->query($sqlStatuts);
 $statuts = $stmtStatuts->fetchAll(PDO::FETCH_COLUMN);
 
-// Récupérer le statut sélectionné pour le filtre (s'il existe)
+// recuperer tou les statuts pour le filtre
 $statutFiltre = $_GET['statut'] ?? null;
 
-// Construire la requête SQL en fonction du filtre
 $sql = "SELECT commandes.id, utilisateurs.nom AS utilisateur, commandes.date_commande, commandes.statut, commandes.total 
         FROM commandes 
         JOIN utilisateurs ON commandes.id_utilisateur = utilisateurs.id";
@@ -46,7 +44,6 @@ $commandes = $stmt->fetchAll();
             <div class="alert alert-success">Le statut de la commande a été mis à jour avec succès.</div>
         <?php endif; ?>
 
-        <!-- Formulaire de filtre par statut -->
         <form method="GET" action="">
             <label for="statut">Filtrer par statut :</label>
             <select name="statut" id="statut">
@@ -86,13 +83,11 @@ $commandes = $stmt->fetchAll();
                             <td><?= $commande['total'] ?> DT</td>
                             <td>
                                 <div class="actions-buttons">
-                                    <!-- Bouton pour marquer comme "Livrée" -->
                                     <form action="changer_statut.php" method="POST" style="display: inline;">
                                         <input type="hidden" name="commande_id" value="<?= $commande['id'] ?>">
                                         <input type="hidden" name="nouveau_statut" value="Livrée">
                                         <button type="submit" class="btn">Marquer comme Livrée</button>
                                     </form>
-                                    <!-- Bouton pour marquer comme "Annulée" -->
                                     <form action="changer_statut.php" method="POST" style="display: inline;">
                                         <input type="hidden" name="commande_id" value="<?= $commande['id'] ?>">
                                         <input type="hidden" name="nouveau_statut" value="Annulée">

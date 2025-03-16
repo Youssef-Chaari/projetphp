@@ -2,7 +2,6 @@
 session_start();
 include 'includes/config.php';
 
-// Rediriger l'utilisateur s'il est déjà connecté
 if (isset($_SESSION['utilisateur_id'])) {
     header('Location: index.php');
     exit();

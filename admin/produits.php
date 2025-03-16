@@ -6,7 +6,6 @@ verifierAdmin();
 
 include '../includes/header-admin.php';
 
-// Récupérer la liste des produits
 $sql = "SELECT * FROM produits";
 $stmt = $pdo->query($sql);
 $produits = $stmt->fetchAll();

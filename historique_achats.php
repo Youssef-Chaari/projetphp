@@ -1,14 +1,12 @@
 <?php
 session_start();
 include 'includes/config.php';
-include 'includes/auth.php'; // Vérifie si l'utilisateur est connecté
-verifierConnexion(); // Applique la vérification
+include 'includes/auth.php'; 
+verifierConnexion(); 
 include 'includes/header.php';
 
-// Récupérer l'ID de l'utilisateur connecté
 $utilisateur_id = $_SESSION['utilisateur_id'];
 
-// Récupérer l'historique des commandes de l'utilisateur
 $sql = "SELECT commandes.id, commandes.date_commande, commandes.statut, commandes.total 
         FROM commandes 
         WHERE commandes.id_utilisateur = :utilisateur_id

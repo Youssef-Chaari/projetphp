@@ -15,12 +15,10 @@ try {
     // Commencer une transaction
     $pdo->beginTransaction();
 
-    // Supprimer les détails de commande liés à ce produit
     $sql = "DELETE FROM details_commande WHERE id_produit = :id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['id' => $id]);
 
-    // Supprimer le produit
     $sql = "DELETE FROM produits WHERE id = :id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['id' => $id]);

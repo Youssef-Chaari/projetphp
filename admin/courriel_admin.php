@@ -2,11 +2,10 @@
 include '../includes/config.php';
 include '../includes/auth.php';
 verifierConnexion();
-verifierAdmin(); // Vérifier que l'utilisateur est un administrateur
+verifierAdmin(); 
 
 include '../includes/header-admin.php';
 
-// Récupérer tous les messages de la base de données
 $sql = "SELECT * FROM messages ORDER BY date_creation DESC";
 $stmt = $pdo->query($sql);
 $messages = $stmt->fetchAll();

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'includes/config.php';
-include 'includes/auth.php'; // Vérifie si l'utilisateur est connecté
+include 'includes/auth.php';
 
 $sql = "SELECT * FROM utilisateurs WHERE id = :id";
 $stmt = $pdo->prepare($sql);

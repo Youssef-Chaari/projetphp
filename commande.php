@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'includes/config.php';
-include 'includes/auth.php'; // Vérifie si l'utilisateur est connecté
+include 'includes/auth.php'; 
 
 if (empty($_SESSION['panier'])) {
     header('Location: panier.php');
@@ -9,12 +9,10 @@ if (empty($_SESSION['panier'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Enregistrer la commande
     $sql = "INSERT INTO commandes (id_utilisateur, date_commande, statut, total) VALUES (:id_utilisateur, NOW(), 'en cours de traitement', :total)";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['id_utilisateur' => $_SESSION['utilisateur_id'], 'total' => array_sum(array_column($_SESSION['panier'], 'prix'))]);
 
-    // Vider le panier
     $_SESSION['panier'] = [];
 
     header('Location: index.php');

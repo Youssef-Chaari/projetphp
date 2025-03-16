@@ -3,9 +3,7 @@ session_start();
 include 'includes/config.php';
 include 'includes/auth.php';
 
-// Rediriger l'utilisateur s'il est déjà connecté
 if (isset($_SESSION['utilisateur_id'])) {
-    // Vérifier le rôle de l'utilisateur pour la redirection
     if ($_SESSION['utilisateur_role'] === 'admin') {
         header('Location: index-admin.php');
     } else {
@@ -24,12 +22,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $utilisateur = $stmt->fetch();
 
     if ($utilisateur && password_verify($mot_de_passe, $utilisateur['mot_de_passe'])) {
-        // Enregistrer les informations de l'utilisateur dans la session
         $_SESSION['utilisateur_id'] = $utilisateur['id'];
         $_SESSION['utilisateur_nom'] = $utilisateur['nom'];
         $_SESSION['utilisateur_role'] = $utilisateur['role'];
 
-        // Rediriger en fonction du rôle de l'utilisateur
         if ($utilisateur['role'] === 'admin') {
             header('Location: admin/index-admin.php');
         } else {

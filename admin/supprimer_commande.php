@@ -12,12 +12,12 @@ if (!isset($_GET['id'])) {
 $id = $_GET['id'];
 
 try {
-    // Supprimer les produits associés à la commande
+    // supprimer les produits associes a la commande
     $sql = "DELETE FROM commande_produits WHERE commande_id = :id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['id' => $id]);
 
-    // Supprimer la commande
+    // supprimer la commande
     $sql = "DELETE FROM commandes WHERE id = :id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(['id' => $id]);
